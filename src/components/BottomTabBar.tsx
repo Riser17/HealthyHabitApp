@@ -5,13 +5,14 @@ import HomeScreen from '../screens/home/HomeScreen';
 import CreateNewHabit from '../screens/createhabit/CreateNewHabit';
 
 import {View} from 'react-native';
-import {BlurView} from '@react-native-community/blur';
+
 import ActivityHabitCharts from '../screens/activityhabit/ActivityHabitCharts';
 
 // Define the types for the tab navigator
 type TabParamList = {
   Home: undefined;
   Create: undefined;
+  ActivityHabitCharts: undefined;
 };
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -21,14 +22,7 @@ const BottomTabBar = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarShowLabel: false,
-        tabBarBackground: () => (
-          <BlurView
-            style={{flex: 1}}
-            blurType="light"
-            blurAmount={10}
-            reducedTransparencyFallbackColor="white"
-          />
-        ),
+
         tabBarIcon: ({focused, color, size}) => {
           let iconName: string;
 
