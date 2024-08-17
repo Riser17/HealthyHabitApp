@@ -1,5 +1,7 @@
 import {StyleSheet, View, Text, Pressable} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import NavigationBar from '../../components/NavigationBar';
+import HabitResourse from '../../../HabitResourse';
 
 export default function HomeScreen() {
   type stepProps = {
@@ -26,11 +28,18 @@ export default function HomeScreen() {
     );
   };
 
+  const profileButton = () => {
+    // props.navigation.navigate('EmedPatientProfile');
+  };
+
   return (
     <View style={styles.container}>
+      <NavigationBar />
+
+      {/* {!profileUrl ? <NavigationBar profileButton={profileButton} /> : null} */}
       <Pressable onPress={() => {}}>
         <LinearGradient
-          colors={['#f07f0e', '#f07f0e80']}
+          colors={HabitResourse.colors.backgroundGradient}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           style={styles.background}>
@@ -44,7 +53,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
     padding: 10,
   },
   background: {

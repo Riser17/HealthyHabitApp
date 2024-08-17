@@ -13,7 +13,7 @@ import {
   PermissionsAndroid,
   SafeAreaView,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BottomTabBar from './src/components/BottomTabBar';
 
@@ -22,26 +22,28 @@ const Stack = createNativeStackNavigator();
 LogBox.ignoreAllLogs();
 
 function App() {
+  const navTheme = DefaultTheme;
+  navTheme.colors.background = 'black';
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <NavigationContainer>
-        <Stack.Navigator
-        // {...{
-        //   initialRouteName: isLoggedIn
-        //     ? userType === '1'
-        //       ? 'BottomTabBar'
-        //       : 'DoctorBottomTabBar'
-        //     : 'UserOption',
-        // }}
-        >
-          <Stack.Screen
-            name="UserOption"
-            component={BottomTabBar}
-            options={{headerShown: false}}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+    // <SafeAreaView style={{flex: 1}}>
+    <NavigationContainer theme={navTheme}>
+      <Stack.Navigator
+      // {...{
+      //   initialRouteName: isLoggedIn
+      //     ? userType === '1'
+      //       ? 'BottomTabBar'
+      //       : 'DoctorBottomTabBar'
+      //     : 'UserOption',
+      // }}
+      >
+        <Stack.Screen
+          name="BottomTabBar"
+          component={BottomTabBar}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+    // </SafeAreaView>
   );
 }
 

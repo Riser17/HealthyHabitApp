@@ -3,10 +3,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from '../screens/home/HomeScreen';
 import CreateNewHabit from '../screens/createhabit/CreateNewHabit';
-
-import {View} from 'react-native';
-
 import ActivityHabitCharts from '../screens/activityhabit/ActivityHabitCharts';
+import {View} from 'react-native';
 
 // Define the types for the tab navigator
 type TabParamList = {
@@ -22,9 +20,8 @@ const BottomTabBar = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarShowLabel: false,
-
         tabBarIcon: ({focused, color, size}) => {
-          let iconName: string;
+          let iconName: string = '';
 
           if (route.name === 'Home') {
             iconName = 'home';
@@ -37,12 +34,10 @@ const BottomTabBar = () => {
           return <FontAwesome name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#f07f0e',
-        tabBarInactiveTintColor: '#ccc',
+        tabBarInactiveTintColor: '#fff',
         tabBarStyle: {
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
+          backgroundColor: 'transparent', // Ensures the background of the tab bar is transparent
+          borderTopWidth: 0, // Removes border on iOS
         },
       })}>
       <Tab.Screen
