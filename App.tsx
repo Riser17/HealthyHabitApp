@@ -15,9 +15,17 @@ import {
 } from 'react-native';
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import BottomTabBar from './src/components/BottomTabBar';
 
-const Stack = createNativeStackNavigator();
+import BottomTabBar from './src/components/BottomTabBar';
+import StepCounter from './src/screens/applehealthsdk/StepCounter';
+
+// Define the stack's parameter list
+type RootStackParamList = {
+  BottomTabBar: undefined;
+  StepCounter: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 LogBox.ignoreAllLogs();
 
@@ -39,6 +47,11 @@ function App() {
         <Stack.Screen
           name="BottomTabBar"
           component={BottomTabBar}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="StepCounter"
+          component={StepCounter}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -1,5 +1,5 @@
 const colors = {
-  backgroundGradient: ['#f07f0e', '#f07f0e80'],
+  backgroundGradient: ['#F7D8BA80', '#F7D8BA'],
   backgroundLightGradient: ['#18459680', '#3FA2C780'],
   //tabNormalTextColor: ['#5E5E5E', '#5E5E5E'],
   screenTitleColor: '#f07f0e',

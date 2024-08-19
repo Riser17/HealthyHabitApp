@@ -6,14 +6,24 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import HabitResourse from '../../HabitResourse';
 
-const NavigationBar = () => {
+const NavigationBar = (props: {backButton: any}) => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.mainContainer}>
       <View style={styles.container}>
         <View style={{flexDirection: 'row', gap: 22}}>
-          <Icon name="settings-sharp" size={22} color={'#fff'} />
+          {props.backButton ? (
+            <Pressable
+              onPress={() => {
+                navigation.goBack();
+              }}>
+              <Icon name="chevron-back" size={22} color={'#fff'} />
+            </Pressable>
+          ) : (
+            <Icon name="settings-sharp" size={22} color={'#fff'} />
+          )}
+
           <Text style={{fontSize: 18, color: 'white', fontWeight: '700'}}>
             Healthy
             <Text style={{color: HabitResourse.colors.screenTitleColor}}>
