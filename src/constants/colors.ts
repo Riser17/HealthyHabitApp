@@ -4,6 +4,7 @@ const colors = {
   //tabNormalTextColor: ['#5E5E5E', '#5E5E5E'],
   screenTitleColor: '#f07f0e',
   white: '#ffffff',
+   black:"#000000"
 };
 
 export default colors;
