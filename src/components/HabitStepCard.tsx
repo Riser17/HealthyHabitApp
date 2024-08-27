@@ -4,6 +4,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import HabitResourse from '../../HabitResourse';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import RingProgress from './RingProgress';
+import useHealthData from '../hooks/useHealthData';
+import StepInfoContainer from './StepInfoContainer';
 
 type RootStackParamList = {
   StepCounter: undefined;
@@ -11,30 +13,10 @@ type RootStackParamList = {
 
 export default function HabitStepCard() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  type stepProps = {
-    steps: string;
-    distance: string;
-    flights: string;
-  };
+  const {steps, distance, flights} = useHealthData(new Date());
 
-  const StepsInfoContainer = (propsInfo: stepProps) => {
-    return (
-      <View style={styles.stepsInfoContainer}>
-        <View style={styles.stepsInfo}>
-          <Text style={styles.stepsLabel}>Steps</Text>
-          <Text style={styles.stepsText}>{propsInfo.steps}</Text>
-        </View>
-        <View style={styles.stepsInfo}>
-          <Text style={styles.stepsLabel}>Distance</Text>
-          <Text style={styles.stepsText}>{propsInfo.distance}</Text>
-        </View>
-        <View style={styles.stepsInfo}>
-          <Text style={styles.stepsLabel}>Flights Climbed</Text>
-          <Text style={styles.stepsText}>{propsInfo.flights}</Text>
-        </View>
-      </View>
-    );
-  };
+  const STEP_GOAL = 1000;
+  const isGoalReached = steps < STEP_GOAL;
 
   const stepCardPressed = () => {
     navigation.navigate('StepCounter');
@@ -48,8 +30,34 @@ export default function HabitStepCard() {
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           style={styles.background}>
-          <StepsInfoContainer steps="5,300" distance="4.2 km" flights="15" />
-          <RingProgress radius={80} strokeWidth={30} progress={0.5} />
+          <View style={styles.stepsInfoContainer}>
+            <StepInfoContainer
+              label="Steps"
+              value={steps.toString()}
+              styleLabel={styles.stepsLabel}
+              styleValue={[
+                styles.stepsText,
+                {color: isGoalReached ? '#EE0F55' : '#AFB3BE'},
+              ]}
+            />
+            <StepInfoContainer
+              label="Distance"
+              value={`${(distance / 1000).toFixed(2)} km`}
+              styleLabel={styles.stepsLabel}
+              styleValue={styles.stepsText}
+            />
+            <StepInfoContainer
+              label="Flights Climbed"
+              value={flights.toString()}
+              styleLabel={styles.stepsLabel}
+              styleValue={styles.stepsText}
+            />
+          </View>
+          <RingProgress
+            radius={80}
+            strokeWidth={30}
+            progress={steps / STEP_GOAL}
+          />
         </LinearGradient>
       </Pressable>
     </View>

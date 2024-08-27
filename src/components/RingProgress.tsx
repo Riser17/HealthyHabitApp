@@ -8,6 +8,7 @@ import Animated, {
 import {useEffect} from 'react';
 
 import Icon from 'react-native-vector-icons/AntDesign';
+import HabitResourse from '../../HabitResourse';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
@@ -16,8 +17,6 @@ type RingProgressProps = {
   strokeWidth: number;
   progress: number;
 };
-
-const color = '#EE0F55';
 
 const RingProgress = ({radius, strokeWidth, progress}: RingProgressProps) => {
   const innerRadius = radius - strokeWidth / 2;
@@ -40,7 +39,7 @@ const RingProgress = ({radius, strokeWidth, progress}: RingProgressProps) => {
     originX: radius,
     originY: radius,
     fill: 'transparent',
-    stroke: color,
+    stroke: HabitResourse.colors.applePrimaryColor,
     strokeWidth: strokeWidth,
     strokeLinecap: 'round',
     rotation: '-90',

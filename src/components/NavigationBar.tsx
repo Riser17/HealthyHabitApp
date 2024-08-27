@@ -40,7 +40,7 @@ const NavigationBar = (props: {backButton: any}) => {
 const styles = StyleSheet.create({
   mainContainer: {
     width: '100%',
-    height: DeviceInfo.hasNotch() ? 80 : 50,
+    height: DeviceInfo.hasNotch() ? 90 : 50,
     justifyContent: 'flex-end',
   },
   container: {
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    padding: 10,
   },
   profileButton: {
     position: 'absolute',

@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {Platform} from 'react-native';
 import AppleHealthKit, {
   HealthInputOptions,
   HealthKitPermissions,
@@ -17,18 +18,28 @@ const useHealthData = (date: Date) => {
         AppleHealthKit.Constants.Permissions.FlightsClimbed,
         AppleHealthKit.Constants.Permissions.DistanceWalkingRunning,
       ],
-      //   write: [AppleHealthKit.Constants.Permissions.Steps],
       write: [],
     },
   };
 
   useEffect(() => {
-    AppleHealthKit.initHealthKit(permissions, err => {
-      if (err) {
-        console.log('Error getting permissions');
+    if (Platform.OS !== 'ios') {
+      return;
+    }
+
+    AppleHealthKit.isAvailable((err, isAvailable) => {
+      if (err || !isAvailable) {
+        console.log('HealthKit is not available');
         return;
       }
-      setHasPermission(true);
+
+      AppleHealthKit.initHealthKit(permissions, err => {
+        if (err) {
+          console.log('Error getting permissions');
+          return;
+        }
+        setHasPermission(true);
+      });
     });
   }, []);
 
@@ -36,9 +47,10 @@ const useHealthData = (date: Date) => {
     if (!hasPermission) {
       return;
     }
+
     const options: HealthInputOptions = {
-      date: date.toISOString(), // optional; default now
-      includeManuallyAdded: false, // optional: default true
+      date: date.toISOString(), // Use the selected date
+      includeManuallyAdded: false,
     };
 
     AppleHealthKit.getStepCount(options, (err, results) => {
@@ -46,26 +58,25 @@ const useHealthData = (date: Date) => {
         console.log('Error getting step count');
         return;
       }
-      console.log('Step count:', results);
       setSteps(results.value);
     });
+
     AppleHealthKit.getFlightsClimbed(options, (err, results) => {
       if (err) {
-        console.log('Error getting step count');
+        console.log('Error getting flights climbed');
         return;
       }
-      console.log('Flight climed:', results);
       setFlights(results.value);
     });
+
     AppleHealthKit.getDistanceWalkingRunning(options, (err, results) => {
       if (err) {
-        console.log('Error getting step count');
+        console.log('Error getting distance');
         return;
       }
-      console.log('Distrance:', results);
       setDistance(results.value);
     });
-  }, [hasPermission]);
+  }, [hasPermission, date]); // Added `date` to the dependency array
 
   return {
     steps,
