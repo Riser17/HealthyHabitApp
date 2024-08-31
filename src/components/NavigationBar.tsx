@@ -5,6 +5,7 @@ import DeviceInfo from 'react-native-device-info';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import HabitResourse from '../../HabitResourse';
+import {moderateScale} from '../constants/responsiveSize';
 
 const NavigationBar = (props: {backButton: any}) => {
   const navigation = useNavigation();
@@ -18,10 +19,10 @@ const NavigationBar = (props: {backButton: any}) => {
               onPress={() => {
                 navigation.goBack();
               }}>
-              <Icon name="chevron-back" size={22} color={'#fff'} />
+              <Icon name="chevron-back" size={22} color={'#f07f0e'} />
             </Pressable>
           ) : (
-            <Icon name="settings-sharp" size={22} color={'#fff'} />
+            <Icon name="settings-sharp" size={22} color={'#f07f0e'} />
           )}
 
           <Text style={{fontSize: 18, color: 'white', fontWeight: '700'}}>
@@ -31,7 +32,7 @@ const NavigationBar = (props: {backButton: any}) => {
             </Text>
           </Text>
         </View>
-        <Icon name="prism-sharp" size={22} color={'#fff'} />
+        <Icon name="prism-sharp" size={22} color={'#f07f0e'} />
       </View>
     </View>
   );
@@ -48,28 +49,7 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
-  },
-  profileButton: {
-    position: 'absolute',
-    marginLeft: 16,
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'lightgrey',
-  },
-  backButton: {
-    position: 'absolute',
-    marginLeft: 14,
-    width: 30,
-    height: 30,
-  },
-  profileImage: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    padding: moderateScale(10),
   },
 });
 

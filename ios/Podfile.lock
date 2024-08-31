@@ -1505,6 +1505,27 @@ PODS:
     - React
   - RNDeviceInfo (11.1.0):
     - React-Core
+  - RNGestureHandler (2.18.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNReanimated (3.15.0):
     - DoubleConversion
     - glog
@@ -1665,6 +1686,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNAppleHealthKit (from `../node_modules/react-native-health`)
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -1806,6 +1828,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-health"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -1881,6 +1905,7 @@ SPEC CHECKSUMS:
   ReactCommon: 3ae48fa4cfa7052a270c2150ececfc94e541fb8a
   RNAppleHealthKit: 60a6beefdd89a75811e9a8873a5e24f351dee681
   RNDeviceInfo: b899ce37a403a4dea52b7cb85e16e49c04a5b88e
+  RNGestureHandler: 939f21fabf5d45a725c0bf175eb819dd25cf2e70
   RNReanimated: 74413c59c47123d7144db601d065627c75c746a3
   RNScreens: 19719a9c326e925498ac3b2d35c4e50fe87afc06
   RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b

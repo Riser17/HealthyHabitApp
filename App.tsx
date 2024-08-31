@@ -18,6 +18,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import BottomTabBar from './src/components/BottomTabBar';
 import StepCounter from './src/screens/applehealthsdk/StepCounter';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 // Define the stack's parameter list
 type RootStackParamList = {
@@ -33,30 +34,30 @@ function App() {
   const navTheme = DefaultTheme;
   navTheme.colors.background = 'black';
   return (
-    // <SafeAreaView style={{flex: 1}}>
-    <NavigationContainer theme={navTheme}>
-      <Stack.Navigator
-      // {...{
-      //   initialRouteName: isLoggedIn
-      //     ? userType === '1'
-      //       ? 'BottomTabBar'
-      //       : 'DoctorBottomTabBar'
-      //     : 'UserOption',
-      // }}
-      >
-        <Stack.Screen
-          name="BottomTabBar"
-          component={BottomTabBar}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="StepCounter"
-          component={StepCounter}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-    // </SafeAreaView>
+    <GestureHandlerRootView>
+      <NavigationContainer theme={navTheme}>
+        <Stack.Navigator
+        // {...{
+        //   initialRouteName: isLoggedIn
+        //     ? userType === '1'
+        //       ? 'BottomTabBar'
+        //       : 'DoctorBottomTabBar'
+        //     : 'UserOption',
+        // }}
+        >
+          <Stack.Screen
+            name="BottomTabBar"
+            component={BottomTabBar}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="StepCounter"
+            component={StepCounter}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 
