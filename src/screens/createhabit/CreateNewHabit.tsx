@@ -13,11 +13,21 @@ import NavigationBar from '../../components/NavigationBar';
 import colors from '../../constants/colors';
 import {height, moderateScale} from '../../constants/responsiveSize';
 
-const CreateNewHabit = () => {
-  const [showHabitBottomSheet, setShowHabitBottomSheet] = useState(false);
-  const [habits, setHabits] = useState([]);
+// Define the types for the habit object
+interface Habit {
+  title: string;
+  description: string;
+  color: string;
+  frequency: string;
+  days: string[];
+}
 
-  const handleSaveHabit = newHabit => {
+const CreateNewHabit: React.FC = () => {
+  const [showHabitBottomSheet, setShowHabitBottomSheet] =
+    useState<boolean>(false);
+  const [habits, setHabits] = useState<Habit[]>([]);
+
+  const handleSaveHabit = (newHabit: Habit) => {
     setHabits([...habits, newHabit]);
     setShowHabitBottomSheet(false); // Close the bottom sheet after saving
   };
@@ -69,14 +79,6 @@ const styles = StyleSheet.create({
     flex: 1,
     // paddingHorizontal: moderateScale(16),
   },
-  headerText: {
-    fontSize: 20,
-    color: 'white',
-    fontWeight: '700',
-  },
-  highlightedText: {
-    color: colors.screenTitleColor,
-  },
   txtStyle: {
     color: 'white',
     marginVertical: moderateScale(20),
@@ -102,106 +104,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '700',
     fontSize: 18,
-  },
-  ModalStyle: {
-    backgroundColor: 'black',
-    minHeight: moderateScale(height / 1.15),
-    padding: moderateScale(15),
-    borderTopLeftRadius: moderateScale(8),
-    borderTopRightRadius: moderateScale(8),
-  },
-  crossStyle: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  },
-  modalHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: moderateScale(10),
-  },
-  modalTitle: {
-    color: colors.white,
-    fontSize: 18,
-  },
-  modalDone: {
-    fontSize: 18,
-    color: colors.white,
-    fontWeight: 'bold',
-  },
-  input: {
-    width: '95%',
-    marginTop: moderateScale(12),
-    padding: moderateScale(15),
-    borderRadius: moderateScale(13),
-    backgroundColor: '#34495e',
-    color: '#ecf0f1',
-  },
-  colorSection: {
-    marginVertical: moderateScale(10),
-  },
-  sectionTitle: {
-    fontSize: moderateScale(16),
-    fontWeight: '500',
-    color: '#fff',
-  },
-  colorContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: moderateScale(10),
-    marginTop: moderateScale(10),
-  },
-  title: {
-    fontSize: 18,
-    color: '#fff',
-    textAlign: 'center',
-    marginBottom: 20,
-  },
-  tabContainer: {
-    flexDirection: 'row',
-    backgroundColor: '#34495e',
-    borderRadius: 10,
-    overflow: 'hidden',
-    marginBottom: 20,
-  },
-  tabButton: {
-    flex: 1,
-    paddingVertical: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  tabText: {
-    color: '#7f8c8d',
-    fontSize: 16,
-  },
-  activeTab: {
-    backgroundColor: '#1abc9c',
-  },
-  activeTabText: {
-    color: '#ecf0f1',
-  },
-  daysContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  dayButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#34495e',
-  },
-  selectedDay: {
-    backgroundColor: '#1abc9c',
-  },
-  dayText: {
-    color: '#bdc3c7',
-    fontSize: 16,
-  },
-  selectedDayText: {
-    color: '#fff',
   },
   habitList: {
     marginTop: moderateScale(20),
