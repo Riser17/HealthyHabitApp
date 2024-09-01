@@ -6,9 +6,18 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import HabitResourse from '../../HabitResourse';
 import {moderateScale} from '../constants/responsiveSize';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+type RootStackParamList = {
+  ProfileSettingScreen: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'ProfileSettingScreen'
+>;
 
 const NavigationBar = (props: {backButton: any}) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();
 
   return (
     <View style={styles.mainContainer}>
@@ -22,7 +31,12 @@ const NavigationBar = (props: {backButton: any}) => {
               <Icon name="chevron-back" size={22} color={'#f07f0e'} />
             </Pressable>
           ) : (
-            <Icon name="settings-sharp" size={22} color={'#f07f0e'} />
+            <Pressable
+              onPress={() => {
+                navigation.navigate('ProfileSettingScreen');
+              }}>
+              <Icon name="settings-sharp" size={22} color={'#f07f0e'} />
+            </Pressable>
           )}
 
           <Text style={{fontSize: 18, color: 'white', fontWeight: '700'}}>
