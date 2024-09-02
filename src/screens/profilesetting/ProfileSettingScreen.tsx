@@ -24,7 +24,23 @@ const ProfileSettingScreen = () => {
     <View style={{flex: 1}}>
       <ScrollView>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Preferences</Text>
+          <Text style={styles.sectionTitle}>App</Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              // handle onPress
+            }}
+            style={styles.row}>
+            <View style={[styles.rowIcon, {backgroundColor: '#FFBF00'}]}>
+              <FeatherIcon color="#fff" name="disc" size={20} />
+            </View>
+
+            <Text style={styles.rowLabel}>Tutorial</Text>
+
+            <View style={styles.rowSpacer} />
+
+            <FeatherIcon color="#C6C6C6" name="chevron-right" size={20} />
+          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => {
@@ -62,33 +78,32 @@ const ProfileSettingScreen = () => {
               // handle onPress
             }}
             style={styles.row}>
-            <View style={[styles.rowIcon, {backgroundColor: '#32c759'}]}>
-              <FeatherIcon color="#fff" name="navigation" size={20} />
+            <View style={[styles.rowIcon, {backgroundColor: '#6495ED'}]}>
+              <FeatherIcon color="#fff" name="database" size={20} />
             </View>
 
-            <Text style={styles.rowLabel}>Location</Text>
+            <Text style={styles.rowLabel}>Data Import/Export</Text>
 
             <View style={styles.rowSpacer} />
 
             <FeatherIcon color="#C6C6C6" name="chevron-right" size={20} />
           </TouchableOpacity>
 
-          <View style={styles.row}>
-            <View style={[styles.rowIcon, {backgroundColor: '#38C959'}]}>
-              <FeatherIcon color="#fff" name="at-sign" size={20} />
+          <TouchableOpacity
+            onPress={() => {
+              // handle onPress
+            }}
+            style={styles.row}>
+            <View style={[styles.rowIcon, {backgroundColor: '#FF69B4'}]}>
+              <FeatherIcon color="#fff" name="list" size={20} />
             </View>
 
-            <Text style={styles.rowLabel}>Email Notifications</Text>
+            <Text style={styles.rowLabel}>Rerder Habits</Text>
 
             <View style={styles.rowSpacer} />
 
-            <Switch
-              onValueChange={emailNotifications =>
-                setForm({...form, emailNotifications})
-              }
-              value={form.emailNotifications}
-            />
-          </View>
+            <FeatherIcon color="#C6C6C6" name="chevron-right" size={20} />
+          </TouchableOpacity>
 
           <View style={styles.row}>
             <View style={[styles.rowIcon, {backgroundColor: '#38C959'}]}>
@@ -109,18 +124,18 @@ const ProfileSettingScreen = () => {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Resources</Text>
+          <Text style={styles.sectionTitle}>General</Text>
 
           <TouchableOpacity
             onPress={() => {
               // handle onPress
             }}
             style={styles.row}>
-            <View style={[styles.rowIcon, {backgroundColor: '#8e8d91'}]}>
-              <FeatherIcon color="#fff" name="flag" size={20} />
+            <View style={[styles.rowIcon, {backgroundColor: '#E97451'}]}>
+              <FeatherIcon color="#fff" name="lock" size={20} />
             </View>
 
-            <Text style={styles.rowLabel}>Report Bug</Text>
+            <Text style={styles.rowLabel}>Privacy Policy</Text>
 
             <View style={styles.rowSpacer} />
 
