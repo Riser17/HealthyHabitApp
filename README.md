@@ -1,5 +1,8 @@
 ## HealthyHabit App
 
+A HealthyHabit App where user can create custom habits and also choose pre defined habits like apple step/distance and lot more.
+Intergrated Apple Health Kit SDK
+
 ## Previews
 
   <img src="https://github.com/user-attachments/assets/76ffc5ad-e460-41fd-b927-ce314135093f" width="350" height="650">
